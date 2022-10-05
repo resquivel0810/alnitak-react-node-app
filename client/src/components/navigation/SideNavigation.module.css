@@ -1,0 +1,69 @@
+aside {
+  padding: 0 15px;
+  display: flex;
+}
+aside .ctn-menu {
+  padding-top: 20px;
+  position: sticky;
+  top: 0;
+}
+aside .list {
+  list-style: none;
+  border-left: 1px solid #e9b485;
+  padding-left: 0px;
+  margin-left: 10px;
+}
+aside .list li {
+  position: relative;
+  color: #edeee9;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+aside .list li a {
+  display: block;
+  color: #edeee9;
+  padding: 15px 10px;
+  text-decoration: none;
+  transition: 0.3s ease all;
+}
+aside .list li.active a {
+  color: #e9b485;
+}
+aside .list li a:hover {
+  color: #0380ff;
+  cursor: pointer;
+}
+aside .list li.active a:hover {
+  color: #e9b485;
+}
+aside .list li.active::before {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 12px;
+  background: #e9b485;
+  position: absolute;
+  left: -6.5px;
+  top: 20px;
+  transition: 0.3s ease all;
+}
+aside .list li.top-bar {
+  content: "";
+  position: relative;
+  left: -6.5px;
+  top: -8px;
+  height: 3px;
+  width: 12px;
+  background: #e9b485;
+}
+aside .list li.bottom-bar {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 12px;
+  background: #e9b485;
+  position: relative;
+  left: -6.5px;
+  top: 8px;
+}

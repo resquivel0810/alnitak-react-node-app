@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap");
+:root {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+
+.r3fCanvas {
+  height: 150vh !important;
+}
+
+.container {
+  width: 1200px;
+  /* height: 90vh; */
+  color: white;
+
+}
+
+.container h1 {
+  text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 290px;
+    /* height: 90vh; */
+    color: white;
+  }
+  .r3fCanvas {
+    height: 560vh !important;
+  }
+}

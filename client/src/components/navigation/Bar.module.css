@@ -1,0 +1,22 @@
+.bar-ctn {
+  margin-left: auto;
+  margin-right: auto;
+}
+.line {
+  width: 100%;
+  border-bottom: 1px solid #FFA800;
+  margin: 0%;
+  padding: 0%;
+}
+.thumb {
+  width: 22px;
+  height: 5px;
+  background-color: #FFA800;
+  transition: transform 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+  .bar-ctn {
+    display: none;
+  }
+}

@@ -1,0 +1,32 @@
+.ctn {
+  position: absolute;
+  top: -45px;
+  left: 0;
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 24px;
+}
+.title h1 {
+  font-weight: 700;
+}
+.subtitle h1 {
+  font-weight: 300;
+}
+@media screen and (max-width: 768px) {
+  .ctn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    text-align: end;
+    width: 100%;
+    font-size: 18px;
+  }
+  .title h1 {
+    padding-right: 2.5rem;
+  }
+  .subtitle {
+    display: none;
+  }
+}

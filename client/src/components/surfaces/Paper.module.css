@@ -1,0 +1,21 @@
+.paper-right {
+  background: rgba(0, 0, 0, 0.47);
+  border-radius: 0px 32px 0px 0px;
+  padding: 1rem;
+}
+.paper-left {
+  background: rgba(0, 0, 0, 0.47);
+  border-radius: 32px 0px 0px 0px;
+  padding: 1rem;
+}
+.paper {
+  background: rgba(0, 0, 0, 0.47);
+  padding: 1rem;
+}
+@media screen and (max-width: 480px) {
+  .paper-left {
+    width: 300px;
+    padding: 0.5rem;
+    margin: 15px;
+  }
+}
