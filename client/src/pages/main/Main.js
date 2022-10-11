@@ -24,6 +24,7 @@ import Tab from "../../components/navigation/Tab";
 import Paper from "../../components/surfaces/Paper";
 import GetInTouch from "../../components/pages/GetInTouch";
 import Titles from "../../components/data_display/Titles";
+import GetInTouch2 from "../../components/pages/GetInTouch2";
 
 import {
   OrbitControls,
@@ -346,8 +347,7 @@ function Navigation(activeTab, onTabClick = (f) => f) {
         <div
           className={classes.getInTouchContainer}
         > 
-          <h3>{!data ? "Loading..." : data}</h3>
-          <GetInTouch />
+          <GetInTouch2 />
         </div>
         <ThreeScene>
           <group scale={3}>
