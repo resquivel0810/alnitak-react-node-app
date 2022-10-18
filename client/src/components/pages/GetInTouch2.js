@@ -116,7 +116,7 @@ export default function GetInTouch2() {
             email: email.value,
             message: message.value,
         };
-        fetch("http://localhost:3000/send_email", {
+        fetch("https://alnitak-react-node-app.herokuapp.com/send_email", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json;charset=utf-8",
