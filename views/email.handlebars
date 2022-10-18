@@ -7,15 +7,61 @@
   <title>Welcome Email</title>
 
   <style>
-  h2 {
-    color: #c4c4c4;
-  }
-</style>
+    .container {
+      width: 500px;
+      border-radius: 15px;
+      margin: auto;
+      margin-top: 50px;
+    }
+    h2 {
+      margin: 10px 0;
+    }
+    .header {
+      background-color: #3D4064;
+      padding: 30px;
+    }
+    .header h1 {
+      color: #EDEEE9;
+      text-align: center;
+    }
+    .content {
+      background-color: #EDEEE9;
+      color: #3D4064;
+      padding: 30px;
+    }
+    .content p {
+      margin: 0;
+    }
+    .footer {
+      background-color: #3D4064;
+      color: #c4c4c4;
+    }
+    .footer h5 {
+      margin: 0;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
 </head>
 
 <body>
-  <h2>Hello {{name}}! </h2>
-  <p>We're glad to have you on board at {{company}}. </p>
+  <div class="container">
+    <div class="header">
+      <h1>ALNITAK</h1>
+    </div>
+    <div class="content">
+      <h2>¡Hola {{name}}! </h2>
+      <p>
+        Hemos recibido la siguiente consulta: <br>  
+        <i>{{query}}</i>  
+        <br>
+        Responderemos lo más pronto posible.
+      </p>
+    </div>
+    <div class="footer">
+      <h5>©2022 Alnitak</h5>
+    </div>
+  </div>
 </body>
 
 </html>

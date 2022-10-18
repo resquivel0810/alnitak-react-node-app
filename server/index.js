@@ -43,6 +43,7 @@ const createTransporter = () => {
         reject("Failed to create access token : error message(" + err);
       }
       resolve(token);
+      console.log(token)
     });
   });
 
@@ -76,8 +77,9 @@ const handlebarOptions = {
 app.post("/send_email", (req, res) => {
   
   const recipient = req.body.email;
-  const mailSubject = req.body.subject;
+  const mailSubject = 'Consulta a Alnitak';
   const mailBody = req.body.message;
+  const recipientName = req.body.name
 
   let transport = createTransporter()
   // use a template file with nodemailer
@@ -91,8 +93,8 @@ app.post("/send_email", (req, res) => {
     text: mailBody,
     template: "email",
     context: {
-      name: recipient, // replace {{name}} with Adebola
-      company: "My Company", // replace {{company}} with My Company
+      name: recipientName, 
+      query: mailBody, 
     },
   };
   let mailOptions2 = {
@@ -100,7 +102,7 @@ app.post("/send_email", (req, res) => {
     to: process.env.SENDER_EMAIL,
     subject: mailSubject,
     text: mailBody,
-    html: "<b>Please give a response!</b>"
+    html: "<b>Responder${}</b>"
     
   };
     
@@ -118,10 +120,11 @@ app.post("/send_email", (req, res) => {
     if (error) {
       // failed block
       console.log(error);
+      // res.redirect('/#error');
     } else {
       // Success block
       console.log("Email sent: " + info.response);
-      return res.redirect("/success.html");
+      // res.redirect('/#success');
     }
   })    
 

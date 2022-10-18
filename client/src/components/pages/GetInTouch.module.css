@@ -1,0 +1,133 @@
+
+.sendBtn {
+    background-color: #FFA800;
+    border-radius: 16px;
+    width: 180px;
+    padding: 0.5rem 1rem;
+    color: black;
+    border: none;
+    justify-self: center;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.sendBtn:hover {
+    transition: 0.3s ease;
+    background-color: #00FFE4;
+    
+}
+
+
+.customField {
+    position: relative;
+    font-size: 14px;
+    border-top: 20px solid transparent;
+    margin-bottom: 5px;
+    display: inline-block;
+    --field-padding: 12px;
+    /* height: 80px; */
+    padding: 10px;
+}
+  
+.customField input, .customField textarea {
+    border: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* background: blue; */
+    padding: var(--field-padding);
+    border-radius: 9px;
+    width: 250px;
+    outline: none;
+    font-size: 16px;
+}
+
+.customField textarea {
+    resize: none;
+    width: 250px;
+    height: 200px;
+}
+  
+.customField .placeholder {
+    position: absolute;
+    left: var(--field-padding);
+    width: calc(100% - (var(--field-padding) * 2));
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    top: 22px;
+    line-height: 100%;
+    transform: translateY(-50%);
+    color: rgba(0, 0, 0, 0.87);
+    transition: 
+      top 0.3s ease,
+      color 0.3s ease,
+      font-size 0.3s ease;
+}
+
+.customField input.dirty + .placeholder,
+.customField input:focus + .placeholder,
+.customField input:not(:placeholder-shown) + .placeholder {
+    top: -10px;
+    font-size: 16px;
+    color: #00FFE4;
+}
+.customField textarea.dirty + .placeholder,
+.customField textarea:focus + .placeholder,
+.customField textarea:not(:placeholder-shown) + .placeholder {
+    top: -10px;
+    font-size: 16px;
+    color: #00FFE4;
+}
+  
+.customField .error-message {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    font-size: 12px;
+    background: #d30909;
+    color: #fff;
+    height: 24px;
+}
+  
+.customField .error-message:empty {
+    opacity: 0;
+}
+
+.customField input {
+    border-radius: 0;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 0px;
+    background:
+      linear-gradient(90deg, #00FFE4, #00FFE4) center bottom/0 0.25em no-repeat,
+      linear-gradient(90deg, #EDEEE9, #EDEEE9) left bottom/100% 0.25em no-repeat,
+      linear-gradient(90deg, #EDEEE9, #EDEEE9) left bottom/100% no-repeat;
+    transition: background-size 0.3s ease;
+  }
+  
+  .customField input.dirty,
+  .customField input:not(:placeholder-shown),
+  .customField input:focus {
+    background-size: 100% 0.25em, 100% 0.1em, 100%;
+  }
+
+  .customField textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 0;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 0px;
+    background:
+      linear-gradient(90deg, #00FFE4, #00FFE4) center bottom/0 0.35em no-repeat,
+      linear-gradient(90deg, #EDEEE9, #EDEEE9) left bottom/100% 0.35em no-repeat,
+      linear-gradient(90deg, #EDEEE9, #EDEEE9) left bottom/100% no-repeat;
+    transition: background-size 0.3s ease;
+  }
+  
+  .customField textarea.dirty,
+  .customField textarea:not(:placeholder-shown),
+  .customField textarea:focus {
+    background-size: 100% 0.35em, 100% 0.1em, 100%;
+  }
+

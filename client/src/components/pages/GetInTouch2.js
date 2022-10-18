@@ -1,42 +1,202 @@
+import { useEffect, useState, useRef } from "react";
+import classes from "./GetInTouch.module.css"
+
 
 export default function GetInTouch2() {
+    const form = useRef();
+    const [status, setStatus] = useState("notSubmitted");
+    const [input, setInput] = useState({
+        name: "",
+        email: "",
+        message:""
+    });
+
+    const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+    const [enteredEmailTouched, setEnteredEmailTouched] = useState(false);
+    const [enteredMessageTouched, setEnteredMessageTouched] = useState(false);
+
+    const initError = {
+        exists: false,
+        helperText: null,
+    };
+
+    const [nameError, setNameError] = useState(initError);
+    const [emailError, setEmailError] = useState(initError);
+    const [messageError, setMessageError] = useState(initError);
+    
+
+    
+    useEffect(() => {
+        if (!input.name && enteredNameTouched) {
+          setNameError({
+            exists: true,
+            helperText: "Escribe un nombre",
+          });
+        } else {
+          setNameError({
+            exists: false,
+            helperText: null,
+          });
+        }
+        const emailRegex =
+          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (!emailRegex.test(input.email) && enteredEmailTouched) {
+          setEmailError({
+            exists: true,
+            helperText: "Correo inválido",
+          });
+        } else {
+          setEmailError({
+            exists: false,
+            helperText: null,
+          });
+        }
+        if (!input.message && enteredMessageTouched) {
+          setMessageError({
+            exists: true,
+            helperText: "Escribe un mensaje",
+          });
+        } else {
+          setMessageError({
+            exists: false,
+            helperText: null,
+          });
+        }
+      }, [input, enteredNameTouched, enteredEmailTouched, enteredMessageTouched]);
+
+    const nameIsValid = !nameError.exists && enteredNameTouched;
+    const emailIsValid = !emailError.exists && enteredEmailTouched;
+    const messageIsValid = !messageError.exists && enteredMessageTouched;
+
+    const nameChangeHandler = (e) => {
+      setInput({ ...input, [e.target.name]: e.target.value });
+    };
+    const nameBlurHandler = (e) => {
+      setEnteredNameTouched(true);
+    };
+  
+    const emailChangeHandler = (e) => {
+      setInput({ ...input, [e.target.name]: e.target.value });
+    };
+    const emailBlurHandler = (e) => {
+      setEnteredEmailTouched(true);
+    };
+
+    const messageChangeHandler = (e) => {
+      setInput({ ...input, [e.target.name]: e.target.value });
+      // console.log(e.target.value)
+    };
+    const messageBlurHandler = (e) => {
+      setEnteredMessageTouched(true);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setEnteredNameTouched(true);
+        setEnteredEmailTouched(true);
+        setEnteredMessageTouched(true);
+        // console.log(!nameIsValid)
+        // console.log(!emailIsValid)
+        console.log(nameError)
+        console.log(emailError)
+        
+        if (!nameIsValid) {
+            return;
+        }
+        if (!emailIsValid) {
+            return;
+        }
+        if (!messageIsValid) {
+          return;
+        }
+        setStatus("Submitted");
+        const { name, email, message } = e.target.elements;
+        let details = {
+            name: name.value,
+            email: email.value,
+            message: message.value,
+        };
+        fetch("http://localhost:3000/send_email", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify(details),
+        })
+        
+        
+    }
+    if(status === 'Submitted'){
+        return(
+            <h1 style={{width:"300px", padding:"100px"}}>Te hemos enviado un correo, en la brevedad nos pondremos en contacto contigo</h1>
+        )
+    }
     return (
+        <>
         <form
-            action="/send_email"
-            method="POST"
-            // style="max-width: 500px; margin: auto"
+            onSubmit={handleSubmit}
+            ref={form}
+            // action="/send_email"
+            // method="POST"
+            style={{width:"300px", backgroundColor:"rgba(0,0,0,.47)", padding:"2rem", borderRadius:"32px 0 0 0", display: "inline-grid",justifyContent: "center"}}
         >
-            <div className="input-wrapper">
+           
+            <label className={classes.customField}>
                 <input
-                    className="input-field"
+                    placeholder="&nbsp;"
                     type="text"
-                    placeholder="Nombre"
-                    name="subject"
-                    required
+                    name="name"
+                    // required
+                    value={input.name}
+                    onChange={nameChangeHandler}
+                    onBlur={nameBlurHandler}
                 />
-            </div>
-            <div className="input-wrapper">
-                    <input
-                        className="input-field"
-                        type="text"
-                        placeholder="Correo"
-                        name="email"
-                        autoComplete="off"
-                        required
-                    />
-            </div>
-            <div className="input-wrapper">
-                    <textarea
-                        id="message"
-                        name="message"
-                        placeholder="Escríbenos..."
-                        required
-                    ></textarea>
-            </div>
-            <button type="submit" className="send-btn">Enviar</button>
+                <span className={classes.placeholder}>Nombre</span>
+                <span className="error-message" aria-live="polite">{nameError.helperText}</span>
+            </label>
+
+             <label className={classes.customField}>
+                <input
+                    placeholder="&nbsp;"
+                    type="text"
+                    name="email"
+                    // required
+                    value={input.email}
+                    onChange={emailChangeHandler}
+                    onBlur={emailBlurHandler}
+                />
+                <span className={classes.placeholder}>Correo</span>
+                <span className="error-message" aria-live="polite">{emailError.helperText}</span>
+            </label>
+         
+            <label className={classes.customField}>
+                <textarea
+                    placeholder="&nbsp;"
+                    type="text"
+                    name="message"
+                    // required
+                    value={input.message}
+                    onChange={messageChangeHandler}
+                    onBlur={messageBlurHandler}
+                ></textarea>
+                <span className={classes.placeholder}>Escríbenos...</span>
+                <span className="error-message" aria-live="polite">{messageError.helperText}</span>
+            </label>
+            <button type="submit" className={classes.sendBtn}>ENVIAR</button>
     </form>
+    {/* <div>
+      { window.location.hash === '#success' &&
+        <div id="success">
+          <p>Te hemos enviado un correo, te responderemos a la brevedad</p>
+        </div>
+      }
+      { window.location.hash === '#error' &&
+        <div id="error">
+          <p>No se pudo mandar el mensaje.</p>
+        </div>
+      }
+    </div> */}
+    </>
     )
-  }
-
-
+}
 
