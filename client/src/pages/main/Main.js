@@ -8,6 +8,7 @@ import React, {
   useEffect,
   useLayoutEffect,
   useMemo,
+  Fragment,
 } from "react";
 import ThreeScene from "../../components/ThreeScene";
 import * as THREE from "three";
@@ -23,8 +24,8 @@ import Tabs from "../../components/navigation/Tabs";
 import Tab from "../../components/navigation/Tab";
 import Paper from "../../components/surfaces/Paper";
 import GetInTouch from "../../components/pages/GetInTouch";
-import Titles from "../../components/data_display/Titles";
 import GetInTouch2 from "../../components/pages/GetInTouch2";
+import Titles from "../../components/data_display/Titles";
 
 import {
   OrbitControls,
@@ -39,7 +40,7 @@ import {
   Text3D,
 } from "@react-three/drei";
 import useRefs from "react-use-refs";
-import { useFrame, Canvas, useThree} from "@react-three/fiber";
+import { useFrame, Canvas, useThree } from "@react-three/fiber";
 
 import innovation from "../../innovation.svg";
 import design from "../../design.svg";
@@ -51,109 +52,107 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 // extend({ EffectComposer, RenderPass, UnrealBloomPass });
 
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('home');
-  
-  const [starCount, setStarCount] = useState(5000) 
-  const [rayleigh, setRayleigh] = useState(1000)
-  const [rotation, setRotation] = useState(0)
+  const [activeTab, setActiveTab] = useState("home");
+
+  const [starCount, setStarCount] = useState(5000);
+  const [rayleigh, setRayleigh] = useState(1000);
+  const [rotation, setRotation] = useState(0);
 
   function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
   }
 
   return (
-    <>
-   <Suspense fallback={null}>
-    <ThreeScene className={classes.r3fCanvas}>
-   
-      <color attach="background" args={['#3D4064']} />
-      <PresentationControls
-        global={true} // Spin globally or by dragging the model
-        cursor={true} // Whether to toggle cursor style on drag
-        snap={false} // Snap-back to center (can also be a spring config)
-        speed={0.05} // Speed factor
-        zoom={0} // Zoom factor when half the polar-max is reached
-        rotation={[0, rotation, 0]} // Default rotation
-        polar={[-Infinity, Infinity]} // Vertical limits
-        azimuth={[-Infinity, Infinity]} // Horizontal limits
-        config={{ mass: 1, tension: 17, friction: 26 }} // Spring config
-      >
-        {/* <Sky sunPosition={[1, .0005,1]} turbidity={0} rayleigh={rayleigh}/> */}
-        <Model3
-          scale={0.03} 
-          position={[getRandomArbitrary(-100,-50), 0, 0]}
-          rotation={[0,-Math.PI/2,0]}
-          xMov={.05}
-          xRot={0.001}
-          yMov={1}
-        />
-        <Model3
-          scale={0.04} 
-          position={[getRandomArbitrary(-100,-50), 15, 0]}
-          rotation={[0,-Math.PI/2,0]}
-          xMov={.05}
-          xRot={0.005}
-          yMov={1}
-        />
-        <Model3
-          scale={0.06} 
-          position={[getRandomArbitrary(-100,-50), -30, 0]}
-          rotation={[0,-Math.PI/2,0]}
-          xMov={.05}
-          xRot={0.005}
-          yMov={1}
-        />
-        <Model4
-          scale={1.5} 
-          position={[getRandomArbitrary(100,50), 30, 0]}
-          rotation={[0,0,0]}
-          xMov={.05}
-          xRot={0.00005}
-          yMov={1}
-        />
-        <Model4
-          scale={1.5} 
-          position={[getRandomArbitrary(100,50), -10, 0]}
-          rotation={[0,0,0]}
-          xMov={.07}
-          xRot={0.00005}
-          yMov={1}
-        />
-        <Model5
-          scale={2} 
-          position={[getRandomArbitrary(100,150), -40, 0]}
-          rotation={[0,0,0]}
-          xMov={.05}
-          xRot={0.00005}
-          yMov={.025}
-        />
-        
-        <Stars count={starCount} />
-      </PresentationControls>
-      {/* <OrbitControls /> */}
-      <hemisphereLight
-        skycolor={new THREE.Color(0xe6ce4a)}
-        groundColor={new THREE.Color(0xe6ce4a)}
-        intensity={2}
-        position={[0, 100, 10]}
+    <Fragment>
+      <Suspense fallback={null}>
+        <ThreeScene className={classes.r3fCanvas}>
+          <color attach="background" args={["#3D4064"]} />
+          <PresentationControls
+            global={true} // Spin globally or by dragging the model
+            cursor={true} // Whether to toggle cursor style on drag
+            snap={false} // Snap-back to center (can also be a spring config)
+            speed={0.05} // Speed factor
+            zoom={0} // Zoom factor when half the polar-max is reached
+            rotation={[0, rotation, 0]} // Default rotation
+            polar={[-Infinity, Infinity]} // Vertical limits
+            azimuth={[-Infinity, Infinity]} // Horizontal limits
+            config={{ mass: 1, tension: 17, friction: 26 }} // Spring config
+          >
+            {/* <Sky sunPosition={[1, .0005,1]} turbidity={0} rayleigh={rayleigh}/> */}
+            <Model3
+              scale={0.03}
+              position={[getRandomArbitrary(-100, -50), 0, 0]}
+              rotation={[0, -Math.PI / 2, 0]}
+              xMov={0.05}
+              xRot={0.001}
+              yMov={1}
+            />
+            <Model3
+              scale={0.04}
+              position={[getRandomArbitrary(-100, -50), 15, 0]}
+              rotation={[0, -Math.PI / 2, 0]}
+              xMov={0.05}
+              xRot={0.005}
+              yMov={1}
+            />
+            <Model3
+              scale={0.06}
+              position={[getRandomArbitrary(-100, -50), -30, 0]}
+              rotation={[0, -Math.PI / 2, 0]}
+              xMov={0.05}
+              xRot={0.005}
+              yMov={1}
+            />
+            <Model4
+              scale={1.5}
+              position={[getRandomArbitrary(100, 50), 30, 0]}
+              rotation={[0, 0, 0]}
+              xMov={0.05}
+              xRot={0.00005}
+              yMov={1}
+            />
+            <Model4
+              scale={1.5}
+              position={[getRandomArbitrary(100, 50), -10, 0]}
+              rotation={[0, 0, 0]}
+              xMov={0.07}
+              xRot={0.00005}
+              yMov={1}
+            />
+            <Model5
+              scale={2}
+              position={[getRandomArbitrary(100, 150), -40, 0]}
+              rotation={[0, 0, 0]}
+              xMov={0.05}
+              xRot={0.00005}
+              yMov={0.025}
+            />
+
+            <Stars count={starCount} />
+          </PresentationControls>
+          {/* <OrbitControls /> */}
+          <hemisphereLight
+            skycolor={new THREE.Color(0xe6ce4a)}
+            groundColor={new THREE.Color(0xe6ce4a)}
+            intensity={2}
+            position={[0, 100, 10]}
+          />
+        </ThreeScene>
+      </Suspense>
+      <Navigation
+        onTabClick={() => {
+          setActiveTab(sessionStorage.getItem("activeTab"));
+          setStarCount(sessionStorage.getItem("starCount"));
+          setRayleigh(sessionStorage.getItem("rayleigh"));
+          setRotation(parseFloat(sessionStorage.getItem("rotation")));
+        }}
+        activeTab={activeTab}
       />
-      
-    </ThreeScene>
-    </Suspense>
-    <Navigation 
-      onTabClick={()=>{
-        setActiveTab(sessionStorage.getItem("activeTab"))
-        setStarCount(sessionStorage.getItem("starCount"))
-        setRayleigh(sessionStorage.getItem("rayleigh"))
-        setRotation(parseFloat(sessionStorage.getItem("rotation")))
-      }} 
-      activeTab={activeTab}
-    />
-    <Footer />
-    </>
+      <Footer />
+    </Fragment>
   );
 }
 
@@ -166,21 +165,12 @@ function Navigation(activeTab, onTabClick = (f) => f) {
       0,
     ]);
   };
-  let motherShipPos
+  let motherShipPos;
   if (window.innerWidth > 480) {
-    motherShipPos = [15, 0, 0]
+    motherShipPos = [15, 0, 0];
   } else {
-    motherShipPos = [1, -8, 0]
+    motherShipPos = [1, -8, 0];
   }
-
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
-  
 
   return (
     <Tabs onTabClick={onTabClick} activeTab={activeTab}>
@@ -192,7 +182,7 @@ function Navigation(activeTab, onTabClick = (f) => f) {
         </ThreeScene>
       </Tab>
       <Tab label={"tecnologies"} tabName={"TECNOLOGIAS "}>
-        <Titles title="ALNITAK" />
+        {/* <Titles title="ALNITAK" /> */}
         {/* <ThreeScene> //comment when rendering TechnologiesCanvas2 */}
         <TechnologiesCanvas2 />
         {/* </ThreeScene> */}
@@ -206,11 +196,8 @@ function Navigation(activeTab, onTabClick = (f) => f) {
                 <div className={classes.paperContent}>
                   <h3>LANDING</h3>
                   <div>
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit. Quos blanditiis tenetur unde suscipit, quam beatae
-                    rerum inventore consectetur, neque doloribus, cupiditate
-                    numquam dignissimos laborum fugiat deleniti? Eum quasi
-                    quidem quibusdam.
+                    Generamos leads de manera sencilla. Nos encargamos de darte
+                    una solución para llegar a las personas indicadas.
                   </div>
                   <ThreeScene>
                     <Model3
@@ -233,11 +220,8 @@ function Navigation(activeTab, onTabClick = (f) => f) {
                 <div className={classes.paperContent}>
                   <h3>SITIO WEB</h3>
                   <div>
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit. Quos blanditiis tenetur unde suscipit, quam beatae
-                    rerum inventore consectetur, neque doloribus, cupiditate
-                    numquam dignissimos laborum fugiat deleniti? Eum quasi
-                    quidem quibusdam.
+                    Transformamos tus ideas en mundos digitales que son una
+                    mezcla de estrategia, creatividad y tecnología.
                   </div>
                   <ThreeScene>
                     <Model4
@@ -260,11 +244,8 @@ function Navigation(activeTab, onTabClick = (f) => f) {
                 <div className={classes.paperContent}>
                   <h3>WEB-APP</h3>
                   <div>
-                    body1. Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit. Quos blanditiis tenetur unde suscipit, quam beatae
-                    rerum inventore consectetur, neque doloribus, cupiditate
-                    numquam dignissimos laborum fugiat deleniti? Eum quasi
-                    quidem quibusdam.
+                    Creamos aplicaciones que corren en navegadores web con una
+                    interfaz gráfica que interactúa con una base de datos.
                   </div>
                   <ThreeScene>
                     <Model5
@@ -297,31 +278,50 @@ function Navigation(activeTab, onTabClick = (f) => f) {
               <ul>
                 <li>
                   <div>
-                    <img width={window.innerWidth > 480 ? "135": "95"} src={innovation} />
+                    <img
+                      width={window.innerWidth > 480 ? "135" : "95"}
+                      src={innovation}
+                    />
                     <h3>Innovación</h3>
                   </div>
                 </li>
                 <li>
                   <div>
-                    <img width={window.innerWidth > 480 ? "115": "80"} src={design} />
+                    <img
+                      width={window.innerWidth > 480 ? "115" : "80"}
+                      src={design}
+                    />
                     <h3>Diseño</h3>
                   </div>
                 </li>
                 <li>
                   <div>
-                    <img width={window.innerWidth > 480 ? "100": "75"} src={creativity} />
+                    <img
+                      width={window.innerWidth > 480 ? "100" : "75"}
+                      src={creativity}
+                    />
                     <h3>Creatividad</h3>
                   </div>
                 </li>
                 <li>
                   <div>
-                    <img width={window.innerWidth > 480 ? "95": "75"} src={technology} />
+                    <img
+                      width={window.innerWidth > 480 ? "95" : "75"}
+                      src={technology}
+                    />
                     <h3>Tecnología</h3>
                   </div>
                 </li>
               </ul>
             </div>
-            <div className={classes.moto} style={{ marginBottom: "3rem", marginTop: window.innerWidth > 480 ? "2rem": "8rem", textAlign: "center" }}>
+            <div
+              className={classes.moto}
+              style={{
+                marginBottom: "3rem",
+                marginTop: window.innerWidth > 480 ? "2rem" : "8rem",
+                textAlign: "center",
+              }}
+            >
               <div>
                 Buscamos que el crecimiento web de nuestros clientes sea
                 vertical, no sólo horizontal.
@@ -329,7 +329,12 @@ function Navigation(activeTab, onTabClick = (f) => f) {
             </div>
             <div className={classes.usBox}>
               <Paper orientation="left">
-                <div style={{fontSize: '18px', padding: window.innerWidth > 480 ? "2rem": "0rem"}}>
+                <div
+                  style={{
+                    fontSize: "18px",
+                    padding: window.innerWidth > 480 ? "2rem" : "0rem",
+                  }}
+                >
                   Contamos con profesionales en distintas áreas para un
                   desarrollo eficaz y brindar servicios end to end. Nuestro
                   equipo multidisciplinario acompaña en el diseño del sitio y
@@ -342,11 +347,8 @@ function Navigation(activeTab, onTabClick = (f) => f) {
         </div>
       </Tab>
       <Tab label={"contact"} tabName={"CONTACTO"}>
-        
         <Titles title="ALNITAK" subtitle="CONTÁCTANOS" />
-        <div
-          className={classes.getInTouchContainer}
-        > 
+        <div className={classes.getInTouchContainer}>
           <GetInTouch2 />
         </div>
         <ThreeScene>
@@ -440,12 +442,11 @@ function Composition({ props, rotation }) {
           ref={ref}
           {...props}
         >
-         
           <Model
             ref={s2}
             material={
               new THREE.MeshPhongMaterial({
-                color: new THREE.Color(0xFFE927),
+                color: new THREE.Color(0xffe927),
                 shininess: 10,
               })
             }
@@ -455,7 +456,7 @@ function Composition({ props, rotation }) {
             ref={s3}
             material={
               new THREE.MeshPhongMaterial({
-                color: new THREE.Color(0xFFE927),
+                color: new THREE.Color(0xffe927),
                 shininess: 10,
               })
             }
@@ -466,7 +467,7 @@ function Composition({ props, rotation }) {
             ref={alnitak}
             material={
               new THREE.MeshPhongMaterial({
-                color: new THREE.Color(0x00FFE4),
+                color: new THREE.Color(0x00ffe4),
                 shininess: 10,
               })
             }
@@ -486,7 +487,7 @@ function Composition({ props, rotation }) {
             ref={s4}
             material={
               new THREE.MeshPhongMaterial({
-                color: new THREE.Color(0xFFE927),
+                color: new THREE.Color(0xffe927),
                 shininess: 10,
               })
             }
@@ -497,7 +498,7 @@ function Composition({ props, rotation }) {
             ref={s5}
             material={
               new THREE.MeshPhongMaterial({
-                color: new THREE.Color(0xFFE927),
+                color: new THREE.Color(0xffe927),
                 shininess: 10,
               })
             }
@@ -508,7 +509,7 @@ function Composition({ props, rotation }) {
             ref={s6}
             material={
               new THREE.MeshPhongMaterial({
-                color: new THREE.Color(0xFFE927),
+                color: new THREE.Color(0xffe927),
                 shininess: 10,
               })
             }
@@ -519,7 +520,7 @@ function Composition({ props, rotation }) {
             ref={s7}
             material={
               new THREE.MeshPhongMaterial({
-                color: new THREE.Color(0xFFE927),
+                color: new THREE.Color(0xffe927),
                 shininess: 10,
               })
             }
@@ -530,7 +531,7 @@ function Composition({ props, rotation }) {
             ref={s8}
             material={
               new THREE.MeshPhongMaterial({
-                color: new THREE.Color(0xFFE927),
+                color: new THREE.Color(0xffe927),
                 shininess: 10,
               })
             }
@@ -973,7 +974,7 @@ function TechnologiesCanvas2() {
 
       zoom
         ? vec.set(focus.x + zoomX, focus.y + zoomY, focus.z + zoomZ)
-        : vec.set(0, 0, 15);
+        : vec.set(4.5, -10, 17);
       //
       state.camera.position.lerp(vec, step);
       state.camera.lookAt(camLookAtx, camLookAty, camLookAtz);
@@ -1053,8 +1054,7 @@ function TechnologiesCanvas2() {
                 >
                   <p>{moment.text}</p>
                   <p>{moment.text2}</p>
-                  {/* <Link to={"/visualizacion_de_datos"}>hipervínculo</Link>  */}    
-
+                  {/* <Link to={"/visualizacion_de_datos"}>hipervínculo</Link>  */}
                 </Html>
               ) : (
                 ""
@@ -1065,52 +1065,116 @@ function TechnologiesCanvas2() {
       </instancedMesh>
     );
   }
-
+  //Dynamic stars args
   const momentsArray = [
     {
-      position: [-8.5, -8, 0],
+      position: [-3.5, -11, 0],
       scale: 0.0025,
       material: new THREE.MeshPhongMaterial({
-        color: new THREE.Color(0xFFE927),
+        color: new THREE.Color(0x00ffe4),
       }),
       y: 6,
-      x: 0,
-      title: "Visualización de datos",
-      text: "Transmitimos ideas con imágenes.",
-      text2: "Tus usuarios te conocerán de una manera más fácil y productivas.",
-      link: "/visualizacion_de_datos"
-    },
-    {
-      position: [0, -5.5, 0],
-      scale: 0.0023,
-      material: new THREE.MeshPhongMaterial({
-        color: new THREE.Color(0xFFE927),
-      }),
-      y: 10,
       x: 0,
       title: "Sitios inmersivos en 3D",
       text: "Haz que tus clientes interactúen con tu marca.",
       text2:
-        "Brinda profundidad y data en un solo lugar. Tus clientes vivirán una experiencia inmersiva cada que visiten tu sitio. Sé parte del metaverso.",
+        "Brinda profundidad y data en un solo lugar. Tus clientes vivirán una \
+        experiencia inmersiva cada que visiten tu sitio. Sé parte del metaverso.",
     },
     {
-      position: [8.5, -5.5, 0],
-      scale: 0.0023,
+      position: [4.5, -10, 0],
+      scale: 0.002,
       material: new THREE.MeshPhongMaterial({
-        color: new THREE.Color(0xFFE927),
+        color: new THREE.Color(0xffe927),
+      }),
+      y: 10,
+      x: 0,
+      title: "Visualización de datos",
+      text: "Transmitimos ideas con imágenes.",
+      text2: "Tus usuarios te conocerán de una manera más fácil y productivas.",
+      link: "/visualizacion_de_datos",
+    },
+    {
+      position: [12.5, -9, 0],
+      scale: 0.002,
+      material: new THREE.MeshPhongMaterial({
+        color: new THREE.Color(0xffe927),
       }),
       y: 10,
       x: -10,
       title: "Formularios dinámicos",
       text: "Obtén data de una manera sencilla y divertida.",
       text2:
-        "Con nuestros formularios dinámicos puede obtener la retroalimentación que esperas, mientras tus usuarios exploran de una manera creativa e ingeniosa cómo depositar su información.",
+        "Con nuestros formularios dinámicos puede obtener la retroalimentación\
+        que esperas, mientras tus usuarios exploran de una manera creativa e \
+        ingeniosa cómo depositar su información.",
     },
-    // {position: [-8, 3, 0], scale: 0.00045, material:new THREE.MeshPhongMaterial({color: new THREE.Color(0xffffff)}), y:2.5, title:'Hola4'},
-    // {position: [0, 5.5, 0], scale: 0.00045, material:new THREE.MeshPhongMaterial({color: new THREE.Color(0xe6ce4a)}), y:2.5, title:'Hola5'},
-    // {position: [8.5, 5.5, 0], scale: 0.00045, material:new THREE.MeshPhongMaterial({color: new THREE.Color(0xffffff)}), y:2.5, title:'Hola6'},
-    // {position: [12, -15, 0], scale: 0.00095, material:new THREE.MeshPhongMaterial({color: new THREE.Color(0xffffff)}), y:2.5, title:'Hola7'},
-    // {position: [-12, -15, 0], scale: 0.00095, material:new THREE.MeshPhongMaterial({color: new THREE.Color(0xffffff)}), y:2.5, title:'Hola8'},
+    {
+      position: [-8.3, 1.8, 0],
+      scale: 0.001,
+      material: new THREE.MeshPhongMaterial({
+        color: new THREE.Color(0xc4ff00),
+      }),
+      y: 2.5,
+      title: "API’s & Webhooks",
+      text: "Las bases de datos requieren un distribuidor de datos que lo haga\
+        de forma ordenada y que eviten errores de almacenamiento.",
+      text2:
+        "Un API se encarga de ordenar y entregar la información necesaria\
+        a quien la pida. Por otro lado, los webhooks son los encargados de notificar\
+        una acción en una aplicación o sitio web.",
+    },
+    {
+      position: [2, 8, 0],
+      scale: 0.001,
+      material: new THREE.MeshPhongMaterial({
+        color: new THREE.Color(0xc4ff00),
+      }),
+      y: 2.5,
+      title: "Integración y soporte de aplicaciones de terceros",
+      text: "Existe un universo de aplicaciones con las cuáles es posible conectar \
+        un servicio ya existente. ",
+      text2:
+        "Por ejemplo, una tienda en línea puede conectarse con Hubspot\
+        para guardar datos de sus leads; después se conecta con Gmail \
+        o MailChimp para generar campañas publicitarias; al final se obtendría \
+        una hoja de cálculo con esa lista de contactados y usuarios que \
+        interactuaron con la campaña. En Alnitak generamos tanto la integración \
+        como el soporte con estas herramientas.",
+    },
+    {
+      position: [16, 3, 0],
+      scale: 0.001,
+      material: new THREE.MeshPhongMaterial({
+        color: new THREE.Color(0xc4ff00),
+      }),
+      y: 2.5,
+      title: "Arquitectura en la nube",
+      text: "Con nosotros todo está a salvo.",
+      text2:
+        "Todas nuestras tecnologías requieren que sean desplegadas en sintonía y que sean\
+        accesibles para cualquier usuario en el mundo. Para esto existen distintas \
+        empresas que brindan servicios de alojamiento en la nube en las cuales puedas \
+        interactuar entre aplicaciones, sitios web, APIs, bases de datos, etc. En \
+        Alnitak usamos AWS, Azure, Google Cloud, entre otras empresas, para alojar \
+        contenido e interactuar con él.",
+    },
+    {
+      position: [16, -25, 0],
+      scale: 0.0015,
+      material: new THREE.MeshPhongMaterial({
+        color: new THREE.Color(0xc4ff00),
+      }),
+      y: 2.5,
+    },
+    {
+      position: [-8, -28, 0],
+      scale: 0.0015,
+      material: new THREE.MeshPhongMaterial({
+        color: new THREE.Color(0xc4ff00),
+      }),
+      y: 2.5,
+    },
   ];
 
   return (
@@ -1123,83 +1187,145 @@ function TechnologiesCanvas2() {
           position={[0, 100, 10]}
         />
         <Cloud momentsData={momentsArray} />
-        <Model
-          material={
-            new THREE.MeshPhongMaterial({
-              color: new THREE.Color(0xC4FF00),
-              shininess: 10,
-            })
-          }
-          scale={0.001}
-          position={[-11.5, 3, 0]}
-        />
-  
+
         <Text
           color={"white"}
-          fontSize={0.6}
+          fontSize={1}
           font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-          position={[-6.5, -5, 0]}
-        >
-          {`Visualización\n de datos`}
-        </Text>
-        <Model
-          material={
-            new THREE.MeshPhongMaterial({
-              color: new THREE.Color(0xC4FF00),
-              shininess: 10,
-            })
-          }
-          scale={0.001}
-          position={[0, 8.3, 0]}
-        />
-       
-        <Text
-          color={"white"}
-          fontSize={0.6}
-          font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-          position={[3, -3.5, 0]}
+          position={[-9, -9, 6]}
+          textAlign="center"
         >
           {`Sitios inmersivos\n en 3D`}
         </Text>
-        <Model
-          material={
-            new THREE.MeshPhongMaterial({
-              color: new THREE.Color(0xC4FF00),
-              shininess: 10,
-            })
-          }
-          scale={0.001}
-          position={[11, 5, 0]}
-        />
         <Text
           color={"white"}
-          fontSize={0.6}
+          fontSize={1}
           font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-          position={[11, -3.5, 0]}
+          position={[4, -13, 4]}
+          textAlign="center"
+        >
+          {`Visualización\n de datos`}
+        </Text>
+        <Text
+          color={"white"}
+          fontSize={1}
+          font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
+          position={[15.5, -8, 4]}
+          textAlign="center"
         >
           {`Formularios\ndinámicos`}
         </Text>
-        <Model
-          material={
-            new THREE.MeshPhongMaterial({
-              color: new THREE.Color(0xC4FF00),
-              shininess: 10,
-            })
-          }
-          scale={0.0013}
-          position={[-14, -23, 0]}
-        />
-        <Model
-          material={
-            new THREE.MeshPhongMaterial({
-              color: new THREE.Color(0xC4FF00),
-              shininess: 10,
-            })
-          }
-          scale={0.0013}
-          position={[13, -23, 0]}
-        />
-       
+        <Text
+          color={"white"}
+          fontSize={1}
+          font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
+          position={[-13, 2, 3]}
+          textAlign="center"
+        >
+          {`API’s & Webhooks`}
+        </Text>
+        <Text
+          color={"white"}
+          fontSize={1}
+          font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
+          position={[2.5, 4, 1]}
+          textAlign="center"
+        >
+          {`Integración y soporte \nde aplicaciones de terceros`}
+        </Text>
+        <Text
+          color={"white"}
+          fontSize={1}
+          font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
+          position={[21, 3, 4]}
+          textAlign="center"
+        >
+          {`Arquitectura en la nube`}
+        </Text>
+        {/* Constelation lines */}
+        <group scale={0.4} position={[4, -10, 0]}>
+          <Line
+            points={[
+              [0, 0, 0],
+              [22, 2, 0],
+            ]}
+            color="white"
+            lineWidth={0.5}
+            dashed={true}
+          />
+          <Line
+            points={[
+              [0, 0, 0],
+              [-12, -2, 0],
+            ]}
+            color="white"
+            lineWidth={0.5}
+            dashed={true}
+          />
+          <Line
+            points={[
+              [-18, 0, 0],
+              [-30, 28, 0],
+            ]}
+            color="white"
+            lineWidth={0.5}
+            dashed={true}
+          />
+          <Line
+            points={[
+              [-6, 44, 0],
+              [-30, 30, 0],
+            ]}
+            color="white"
+            lineWidth={0.5}
+            dashed={true}
+          />
+          <Line
+            points={[
+              [-3, 44, 0],
+              [30, 32, 0],
+            ]}
+            color="white"
+            lineWidth={0.5}
+            dashed={true}
+          />
+          <Line
+            points={[
+              [30, 32, 0],
+              [21, 2, 0],
+            ]}
+            color="white"
+            lineWidth={0.5}
+            dashed={true}
+          />
+          <Line
+            points={[
+              [21, 2, 0],
+              [31, -38, 0],
+            ]}
+            color="white"
+            lineWidth={0.5}
+            dashed={true}
+          />
+          <Line
+            points={[
+              [31, -38, 0],
+              [-30, -45, 0],
+            ]}
+            color="white"
+            lineWidth={0.5}
+            dashed={true}
+          />
+          <Line
+            points={[
+              [-30, -45, 0],
+              [-18, 0, 0],
+            ]}
+            color="white"
+            lineWidth={0.5}
+            dashed={true}
+          />
+        </group>
         <OrbitControls enableZoom={false} />
       </group>
     </Canvas>
