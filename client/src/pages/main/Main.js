@@ -64,6 +64,7 @@ export default function App() {
   function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
   }
+  
 
   return (
     <Fragment>
@@ -442,7 +443,7 @@ function Composition({ props, rotation }) {
           ref={ref}
           {...props}
         >
-          <Model
+          {/* <Model
             ref={s2}
             material={
               new THREE.MeshPhongMaterial({
@@ -451,8 +452,8 @@ function Composition({ props, rotation }) {
               })
             }
             scale={0.005}
-          />
-          <Model
+          /> */}
+          {/* <Model
             ref={s3}
             material={
               new THREE.MeshPhongMaterial({
@@ -462,17 +463,17 @@ function Composition({ props, rotation }) {
             }
             scale={0.005}
             position={[22, 2, 0]}
-          />
+          /> */}
           <Model
             ref={alnitak}
             material={
               new THREE.MeshPhongMaterial({
                 color: new THREE.Color(0x00ffe4),
-                shininess: 10,
+                shininess: 1,
               })
             }
-            scale={0.007}
-            position={[-18, -2, 0]}
+            scale={0.025}
+            position={[0, 0, 0]}
           />
           {/* <Text
             ref={t1}
@@ -483,7 +484,7 @@ function Composition({ props, rotation }) {
           >
             Alnitak
           </Text> */}
-          <Model
+          {/* <Model
             ref={s4}
             material={
               new THREE.MeshPhongMaterial({
@@ -493,8 +494,8 @@ function Composition({ props, rotation }) {
             }
             scale={0.002}
             position={[-30, 30, 0]}
-          />
-          <Model
+          /> */}
+          {/* <Model
             ref={s5}
             material={
               new THREE.MeshPhongMaterial({
@@ -504,8 +505,8 @@ function Composition({ props, rotation }) {
             }
             scale={0.002}
             position={[-6, 44, 0]}
-          />
-          <Model
+          /> */}
+          {/* <Model
             ref={s6}
             material={
               new THREE.MeshPhongMaterial({
@@ -515,8 +516,8 @@ function Composition({ props, rotation }) {
             }
             scale={0.002}
             position={[30, 31, 0]}
-          />
-          <Model
+          /> */}
+          {/* <Model
             ref={s7}
             material={
               new THREE.MeshPhongMaterial({
@@ -526,8 +527,8 @@ function Composition({ props, rotation }) {
             }
             scale={0.002}
             position={[-30, -45, 0]}
-          />
-          <Model
+          /> */}
+          {/* <Model
             ref={s8}
             material={
               new THREE.MeshPhongMaterial({
@@ -537,8 +538,8 @@ function Composition({ props, rotation }) {
             }
             scale={0.002}
             position={[31, -38, 0]}
-          />
-          <group ref={lines}>
+          /> */}
+          {/* <group ref={lines}>
             <Line
               points={[
                 [0, 0, 0],
@@ -620,7 +621,7 @@ function Composition({ props, rotation }) {
               lineWidth={0.5}
               dashed={true}
             />
-          </group>
+          </group> */}
         </group>
       </Suspense>
       <hemisphereLight
@@ -962,7 +963,7 @@ function TechnologiesCanvas2() {
   function Cloud({ momentsData }) {
     const [zoom, setZoom] = useState(false);
     const [focus, setFocus] = useState(true);
-    const [onFocus, setOnFocus] = useState();
+    const [onFocus, setOnFocus] = useState('onfocus');
     const vec = new THREE.Vector3();
 
     useFrame((state) => {
@@ -972,9 +973,21 @@ function TechnologiesCanvas2() {
       Need to find some way to lerp the lookAt
       */
 
+      let focYCor, focXCor
+      if (focus.y > 0) {
+        focYCor = - Math.abs(focus.y)/8  
+      } else {
+        focYCor = Math.abs(focus.y)/2
+      }
+      if (focus.x >0) {
+        focXCor = - Math.abs(focus.x)/4
+      } else {
+        focXCor = Math.abs(focus.x)/2
+      }
+
       zoom
-        ? vec.set(focus.x + zoomX, focus.y + zoomY, focus.z + zoomZ)
-        : vec.set(4.5, -10, 17);
+        ? vec.set(focus.x + focXCor , focus.y + focYCor  , focus.z + 5)
+        : vec.set(0, -5, 17);
       //
       state.camera.position.lerp(vec, step);
       state.camera.lookAt(camLookAtx, camLookAty, camLookAtz);
@@ -994,9 +1007,9 @@ function TechnologiesCanvas2() {
     };
 
     if (window.innerWidth > 480) {
-      camLookAtx = 2;
+      camLookAtx = 0;
       camLookAty = -6;
-      camLookAtz = -10;
+      camLookAtz = -15;
       zoomX = 0;
       zoomY = 3;
       zoomZ = 4;
@@ -1005,10 +1018,10 @@ function TechnologiesCanvas2() {
       techDescrZ = 0;
     } else {
       camLookAtx = 1;
-      camLookAty = -5;
+      camLookAty = -7;
       camLookAtz = 0;
 
-      if (onFocus === 8.5) {
+      if (onFocus === 8) {
         zoomX = 3;
         zoomY = 5;
         zoomZ = 4;
@@ -1068,7 +1081,7 @@ function TechnologiesCanvas2() {
   //Dynamic stars args
   const momentsArray = [
     {
-      position: [-3.5, -11, 0],
+      position: [-8, -10, 0],
       scale: 0.0025,
       material: new THREE.MeshPhongMaterial({
         color: new THREE.Color(0x00ffe4),
@@ -1082,7 +1095,7 @@ function TechnologiesCanvas2() {
         experiencia inmersiva cada que visiten tu sitio. Sé parte del metaverso.",
     },
     {
-      position: [4.5, -10, 0],
+      position: [0, -9, 0],
       scale: 0.002,
       material: new THREE.MeshPhongMaterial({
         color: new THREE.Color(0xffe927),
@@ -1095,7 +1108,7 @@ function TechnologiesCanvas2() {
       link: "/visualizacion_de_datos",
     },
     {
-      position: [12.5, -9, 0],
+      position: [8, -8, 0],
       scale: 0.002,
       material: new THREE.MeshPhongMaterial({
         color: new THREE.Color(0xffe927),
@@ -1110,7 +1123,7 @@ function TechnologiesCanvas2() {
         ingeniosa cómo depositar su información.",
     },
     {
-      position: [-8.3, 1.8, 0],
+      position: [-12.8, 2.8, 0],
       scale: 0.001,
       material: new THREE.MeshPhongMaterial({
         color: new THREE.Color(0xc4ff00),
@@ -1125,7 +1138,7 @@ function TechnologiesCanvas2() {
         una acción en una aplicación o sitio web.",
     },
     {
-      position: [2, 8, 0],
+      position: [-2.5, 9, 0],
       scale: 0.001,
       material: new THREE.MeshPhongMaterial({
         color: new THREE.Color(0xc4ff00),
@@ -1143,7 +1156,7 @@ function TechnologiesCanvas2() {
         como el soporte con estas herramientas.",
     },
     {
-      position: [16, 3, 0],
+      position: [11.5, 4, 0],
       scale: 0.001,
       material: new THREE.MeshPhongMaterial({
         color: new THREE.Color(0xc4ff00),
@@ -1160,7 +1173,7 @@ function TechnologiesCanvas2() {
         contenido e interactuar con él.",
     },
     {
-      position: [16, -25, 0],
+      position: [11.5, -24, 0],
       scale: 0.0015,
       material: new THREE.MeshPhongMaterial({
         color: new THREE.Color(0xc4ff00),
@@ -1168,7 +1181,7 @@ function TechnologiesCanvas2() {
       y: 2.5,
     },
     {
-      position: [-8, -28, 0],
+      position: [-12.5, -27, 0],
       scale: 0.0015,
       material: new THREE.MeshPhongMaterial({
         color: new THREE.Color(0xc4ff00),
@@ -1190,60 +1203,60 @@ function TechnologiesCanvas2() {
 
         <Text
           color={"white"}
-          fontSize={1}
+          fontSize={.8}
           font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-          position={[-9, -9, 6]}
+          position={[-5, -7, 0]}
           textAlign="center"
         >
           {`Sitios inmersivos\n en 3D`}
         </Text>
         <Text
           color={"white"}
-          fontSize={1}
+          fontSize={.8}
           font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-          position={[4, -13, 4]}
+          position={[3, -7, 0]}
           textAlign="center"
         >
           {`Visualización\n de datos`}
         </Text>
         <Text
           color={"white"}
-          fontSize={1}
+          fontSize={.8}
           font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-          position={[15.5, -8, 4]}
+          position={[11.5, -6, 0]}
           textAlign="center"
         >
           {`Formularios\ndinámicos`}
         </Text>
         <Text
           color={"white"}
-          fontSize={1}
+          fontSize={.8}
           font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-          position={[-13, 2, 3]}
+          position={[-10, 4.6, 0]}
           textAlign="center"
         >
-          {`API’s & Webhooks`}
+          {`API’s & \nWebhooks`}
         </Text>
         <Text
           color={"white"}
-          fontSize={1}
+          fontSize={.8}
           font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-          position={[2.5, 4, 1]}
+          position={[2.5, 11, 0]}
           textAlign="center"
         >
           {`Integración y soporte \nde aplicaciones de terceros`}
         </Text>
         <Text
           color={"white"}
-          fontSize={1}
+          fontSize={.8}
           font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-          position={[21, 3, 4]}
+          position={[11, 6, 0]}
           textAlign="center"
         >
-          {`Arquitectura en la nube`}
+          {`Arquitectura \nen la nube`}
         </Text>
         {/* Constelation lines */}
-        <group scale={0.4} position={[4, -10, 0]}>
+        <group scale={0.4} position={[-.5, -9, 0]}>
           <Line
             points={[
               [0, 0, 0],
