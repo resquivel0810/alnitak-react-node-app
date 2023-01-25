@@ -1,0 +1,56 @@
+.solutionCard {
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+}
+.solutionCard h3 {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+}
+.paperContent {
+  padding: 18px;
+  height: 450px;
+  width: 300px;
+}
+.imageContainer {
+}
+.title {
+  line-height: 1;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+.btn-ctn {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+.body {
+  height: 100px;
+  overflow-y: scroll;
+  padding-right: 1rem;
+}
+/* scroll bar */
+::-webkit-scrollbar {
+  width: 2px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #888;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #f1f1f1;
+}
+
+@media screen and (max-width: 768px) {
+  .solutionCard {
+    margin-bottom: 1rem;
+  }
+}

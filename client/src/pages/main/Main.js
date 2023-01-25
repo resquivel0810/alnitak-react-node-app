@@ -53,6 +53,7 @@ import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPa
 // extend({ EffectComposer, RenderPass, UnrealBloomPass });
 
 import { Link } from "react-router-dom";
+import SolutionCard from "../../components/surfaces/SolutionCard";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("home");
@@ -181,90 +182,80 @@ function Navigation(activeTab, onTabClick = (f) => f) {
           <Composition rotation={rotation} />
         </ThreeScene>
       </Tab>
+      <Tab label={"solutions"} tabName={"SOLUCIONES"}>
+        <div className={classes.ctn}>
+          <Titles title="ALNITAK" subtitle="SOLUCIONES" />
+
+          <div className={classes.solutionsCtn}>
+            <SolutionCard
+              title_1="SITIOS"
+              title_2="WEB"
+              subtitle="Haz que tu idea sea visible en internet"
+              body="Transformamos tus ideas en mundos digitales que son una
+              mezcla de estrategia, creatividad y tecnología."
+              cta="Conozca más"
+            >
+              <ThreeScene>
+                <Model3
+                  rotation={[0, -Math.PI / 2, -Math.PI / 6]}
+                  scale={0.8}
+                />
+                <hemisphereLight
+                  skycolor={new THREE.Color(0xc4ff00)}
+                  groundColor={new THREE.Color(0xc4ff00)}
+                  intensity={1}
+                  position={[0, 100, 10]}
+                />
+                <OrbitControls enableZoom={false} autoRotate />
+              </ThreeScene>
+            </SolutionCard>
+            <SolutionCard
+              title_1="DESARROLLO DE"
+              title_2="SOFTWARE"
+              subtitle="Creamos soluciones tecnológicas a la medida"
+              body="Creamos aplicaciones que corren en navegadores web con una
+              interfaz gráfica que interactúa con una base de datos."
+              cta="Conozca más"
+            >
+              <ThreeScene>
+                <Model4 rotation={[0, -Math.PI / 2, -Math.PI / 6]} scale={25} />
+                <hemisphereLight
+                  skycolor={new THREE.Color(0x0380ff)}
+                  groundColor={new THREE.Color(0x0380ff)}
+                  intensity={2}
+                  position={[0, 100, 10]}
+                />
+                <OrbitControls enableZoom={false} autoRotate />
+              </ThreeScene>
+            </SolutionCard>
+            <SolutionCard
+              title_1="BUSINESS"
+              title_2="ANALYTCS"
+              subtitle="Descubre los insights de tu negocio"
+              body="Te ayudamos a tomar mejores decisiones con análisis,
+              visualisación y predicción de datos."
+              cta="Conozca más"
+            >
+              <ThreeScene>
+                <Model5 rotation={[0, -Math.PI / 2, -Math.PI / 6]} scale={30} />
+                <hemisphereLight
+                  skycolor={new THREE.Color(0xd00dff)}
+                  groundColor={new THREE.Color(0xd00dff)}
+                  intensity={1.5}
+                  position={[0, 100, 10]}
+                />
+                <OrbitControls enableZoom={false} autoRotate />
+              </ThreeScene>
+            </SolutionCard>
+          </div>
+        </div>
+      </Tab>
+
       <Tab label={"tecnologies"} tabName={"TECNOLOGIAS "}>
         {/* <Titles title="ALNITAK" /> */}
         {/* <ThreeScene> //comment when rendering TechnologiesCanvas2 */}
         <TechnologiesCanvas2 />
         {/* </ThreeScene> */}
-      </Tab>
-      <Tab label={"solutions"} tabName={"SOLUCIONES"}>
-        <div className={classes.ctn}>
-          <Titles title="ALNITAK" subtitle="SOLUCIONES" />
-          <div className={classes.solutionsCtn}>
-            <div className={classes.solutionsBox}>
-              <Paper orientation="right">
-                <div className={classes.paperContent}>
-                  <h3>LANDING</h3>
-                  <div>
-                    Generamos leads de manera sencilla. Nos encargamos de darte
-                    una solución para llegar a las personas indicadas.
-                  </div>
-                  <ThreeScene>
-                    <Model3
-                      rotation={[0, -Math.PI / 2, -Math.PI / 6]}
-                      scale={0.8}
-                    />
-                    <hemisphereLight
-                      skycolor={new THREE.Color(0xc4ff00)}
-                      groundColor={new THREE.Color(0xc4ff00)}
-                      intensity={1}
-                      position={[0, 100, 10]}
-                    />
-                    <OrbitControls enableZoom={false} autoRotate />
-                  </ThreeScene>
-                </div>
-              </Paper>
-            </div>
-            <div className={classes.solutionsBox}>
-              <Paper orientation="right">
-                <div className={classes.paperContent}>
-                  <h3>SITIO WEB</h3>
-                  <div>
-                    Transformamos tus ideas en mundos digitales que son una
-                    mezcla de estrategia, creatividad y tecnología.
-                  </div>
-                  <ThreeScene>
-                    <Model4
-                      rotation={[0, -Math.PI / 2, -Math.PI / 6]}
-                      scale={25}
-                    />
-                    <hemisphereLight
-                      skycolor={new THREE.Color(0x0380ff)}
-                      groundColor={new THREE.Color(0x0380ff)}
-                      intensity={2}
-                      position={[0, 100, 10]}
-                    />
-                    <OrbitControls enableZoom={false} autoRotate />
-                  </ThreeScene>
-                </div>
-              </Paper>
-            </div>
-            <div className={classes.solutionsBox}>
-              <Paper orientation="right">
-                <div className={classes.paperContent}>
-                  <h3>WEB-APP</h3>
-                  <div>
-                    Creamos aplicaciones que corren en navegadores web con una
-                    interfaz gráfica que interactúa con una base de datos.
-                  </div>
-                  <ThreeScene>
-                    <Model5
-                      rotation={[0, -Math.PI / 2, -Math.PI / 6]}
-                      scale={30}
-                    />
-                    <hemisphereLight
-                      skycolor={new THREE.Color(0xd00dff)}
-                      groundColor={new THREE.Color(0xd00dff)}
-                      intensity={1.5}
-                      position={[0, 100, 10]}
-                    />
-                    <OrbitControls enableZoom={false} autoRotate />
-                  </ThreeScene>
-                </div>
-              </Paper>
-            </div>
-          </div>
-        </div>
       </Tab>
 
       {/* <Tab label={"portfolio"} tabName={"PORTAFOLIO"}>
