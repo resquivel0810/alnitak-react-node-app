@@ -1,4 +1,5 @@
 import Tooltip from '@mui/material/Tooltip';
+import TwitterIcon from '@mui/icons-material/Twitter';
 
 import classes from "./Footer.module.css";
 import { Link } from 'react-router-dom'
@@ -11,14 +12,13 @@ const Footer = (props) => {
           <Link style={{color:'white'}} to={"/aviso-de-privacidad"}>Aviso de privacidad</Link>
         </span>
         <span>|</span>
-        <span>Alnitak 2022</span>
+        <span>Alnitak 2023</span>
       </div>
       <div className={classes["right-side"]}>
         <div className={classes["social-networks"]}>
           <ul>
-            <li>*</li>
-            <li>*</li>
-            <li>*</li>
+            <li><TwitterIcon /></li>
+       
           </ul>
         </div>
         <span>55 5555 5555</span>
