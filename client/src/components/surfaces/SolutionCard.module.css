@@ -1,3 +1,7 @@
+a {
+  text-decoration: none;
+  color: #f1f1f1;
+}
 .solutionCard {
   margin-right: 1.5rem;
   margin-left: 1.5rem;
@@ -10,11 +14,10 @@
 }
 .paperContent {
   padding: 18px;
-  height: 450px;
+  height: 480px;
   width: 300px;
 }
-.imageContainer {
-}
+
 .title {
   line-height: 1;
   margin-top: 0%;
@@ -22,8 +25,8 @@
 }
 .btn-ctn {
   display: flex;
-  justify-content: flex-start;
-  margin-top: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 .body {
   height: 100px;

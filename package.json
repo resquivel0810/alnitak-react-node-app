@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/styles": "^4.11.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "fs": "^0.0.1-security",
