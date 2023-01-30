@@ -1,4 +1,12 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, Fragment } from "react";
+
+import * as THREE from "three";
+
+import ThreeScene from "../../ThreeScene";
+import Model2 from "../../ContactShip";
+
+
+//CSS
 import classes from "./GetInTouch.module.css"
 
 
@@ -131,8 +139,27 @@ export default function GetInTouch2() {
             <h1 style={{width:"300px", padding:"100px"}}>Te hemos enviado un correo, en la brevedad nos pondremos en contacto contigo</h1>
         )
     }
+
+    let motherShipPos;
+    if (window.innerWidth > 480) {
+      motherShipPos = [0, 0, 0];
+    } else {
+      motherShipPos = [1, -8, 0];
+    }
+
     return (
-        <>
+        <div
+          style={
+            {
+              width: "100%",
+              height: "auto",
+              display: "flex",
+              justifyContent: "space-around",
+              alignItems: "center",
+              marginTop: "130px",
+            }
+          }
+        >
         <form
             onSubmit={handleSubmit}
             ref={form}
@@ -196,7 +223,32 @@ export default function GetInTouch2() {
         </div>
       }
     </div> */}
-    </>
+    <div style={{
+      width: "100%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    }}>
+      <ThreeScene style={{
+        width: "500px",
+        height: "500px",
+      }}>
+            <group scale={5}>
+              <Model2
+                rotation={[0, -Math.PI / 3, -Math.PI / 6]}
+                position={motherShipPos}
+              />
+              <hemisphereLight
+                skycolor={new THREE.Color(0xffd403)}
+                groundColor={new THREE.Color(0xffd403)}
+                intensity={1}
+                position={[0, 100, 10]}
+              />
+            </group>
+            {/* <OrbitControls enableZoom={false} /> */}
+          </ThreeScene>
+    </div>
+    </div>
     )
 }
 

@@ -35,7 +35,7 @@
   padding-right: 8rem;
   margin-right: 0rem;
 }
-.right-side span {
+.right-side .item {
   margin-right: 1rem;
 }
 .social-networks {
@@ -53,6 +53,9 @@
 .social-networks li {
   margin-right: 1rem;
   margin-left: 1rem;
+}
+.social-networks li button {
+ width: 100%;
 }
 .email:link {
   text-decoration: none;
