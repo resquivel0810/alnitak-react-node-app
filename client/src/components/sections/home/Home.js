@@ -13,6 +13,10 @@ import {
     Html
   } from "@react-three/drei";
 
+//MUI
+import Button from '@mui/material/Button';
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
+
 //CSS
 import classes from "./Home.module.css";
 
@@ -68,15 +72,31 @@ function Composition(props) {
           position={textPos}
           zIndexRange={[-0, -0]}
           occlude={false}
-          style={{ width: window.innerWidth > 480 ? "350px" : "290px" }}
+          style={{ width: window.innerWidth > 480 ? "400px" : "290px" }}
         >
           <h1>¿Te imaginas todo lo que podríamos hacer juntos?</h1>
           <p>
-            Somos una desarrolladora multidisciplinaria de software y soluciones TI. Nuestro
+            Somos una desarrolladora multidisciplinaria de <b>SOFTWARE</b> y <b>DATA ANALYTICS</b>. Nuestro
             enfoque es dar soluciones digitales creativas e innovadoras que
-            conecten a las marcas con sus clientes. Trabajamos en tecnologías de
-            frontend y backend.
+            conecten a las marcas con sus clientes. 
           </p>
+          <div className={classes.btnContainer}>
+            <Button 
+              size="large"
+              variant="outlined"
+              sx={{
+                backgroundColor: "#0380FF",
+                color: "white",
+                "&:hover": {
+                  backgroundColor: "#FFA800",
+                  color: "white",
+                  border: "1px solid #FFA800"
+                },
+              }}
+              endIcon={<RocketLaunchIcon />}
+              >COMIENZA TU PROYECTO
+            </Button>
+          </div>
         </Html>
       </group>
     );
