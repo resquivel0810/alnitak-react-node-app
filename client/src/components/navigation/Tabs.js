@@ -41,11 +41,11 @@ const Tabs = (props) => {
             sessionStorage.setItem("starCount", 5000);
             sessionStorage.setItem("rayleigh", 1000);
             sessionStorage.setItem("rotation", 0);
-            if (sessionStorage.getItem("activeTab") == "tecnologies") {
+            if (sessionStorage.getItem("activeTab") == "solutions") {
               sessionStorage.setItem("starCount", 4000);
               sessionStorage.setItem("rayleigh", 500);
               sessionStorage.setItem("rotation", -0.5);
-            } else if (sessionStorage.getItem("activeTab") == "solutions") {
+            } else if (sessionStorage.getItem("activeTab") == "tecnologies") {
               sessionStorage.setItem("starCount", 3000);
               sessionStorage.setItem("rayleigh", 30);
               sessionStorage.setItem("rotation", -1);

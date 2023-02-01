@@ -15,7 +15,6 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Main />}></Route>
-        <Route exact path="/sitios-web" element={<WebSites />}></Route>
         <Route exact path="/aviso-de-privacidad" element={<PrivacyNotice />}></Route>
       </Routes>
     </Router>
