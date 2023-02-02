@@ -186,6 +186,7 @@ const TechnologiesCanvas = () => {
                 {zoom && moment.position[0] === onFocus ? (
                   <Html
                     className={classes.techDescr}
+                    style={{width:'300px', padding:'30px', backgroundColor:'rgba(0,0,0,.8)'}}
                     position={[
                       moment.position[0] + techDescrX,
                       moment.position[1] + techDescrY,
