@@ -186,7 +186,15 @@ const TechnologiesCanvas = () => {
                 {zoom && moment.position[0] === onFocus ? (
                   <Html
                     className={classes.techDescr}
-                    style={{width:'300px', padding:'30px', backgroundColor:'rgba(0,0,0,.8)'}}
+                    style={{
+                      width:'300px', 
+                      paddingLeft:'15px', 
+                      paddingTop:'10px',
+                      backgroundColor:'rgba(0,0,0,.8)',
+                      height: '250px',
+                      overflowY: 'scroll',
+                      paddingRight: '1rem'
+                    }}
                     position={[
                       moment.position[0] + techDescrX,
                       moment.position[1] + techDescrY,
@@ -216,11 +224,10 @@ const TechnologiesCanvas = () => {
         }),
         y: 6,
         x: 0,
-        title: "Sitios inmersivos en 3D",
-        text: "Haz que tus clientes interactúen con tu marca.",
+        title: "Inteligencia \nArtificial",
+        text: "",
         text2:
-          "Brinda profundidad y data en un solo lugar. Tus clientes vivirán una \
-          experiencia inmersiva cada que visiten tu sitio. Sé parte del metaverso.",
+          "La IA y el aprendizaje automático están transformando la forma en que los programas se crean y se utilizan.Con estas tecnologías, los sistemas pueden aprender de los datos y realizar tareas complejas sin la intervención humana. Se espera que esto lleve a una mayor eficiencia y productividad en el desarrollo de software, así como a la creación de nuevas soluciones y aplicaciones.",
       },
       {
         position: [0, -9, 0],
@@ -230,10 +237,9 @@ const TechnologiesCanvas = () => {
         }),
         y: 10,
         x: 0,
-        title: "Visualización de datos",
-        text: "Transmitimos ideas con imágenes.",
-        text2: "Tus usuarios te conocerán de una manera más fácil y productivas.",
-        link: "/visualizacion_de_datos",
+        title: "Computación en \n la nube",
+        text: "",
+        text2: "La nube es un modelo de computación en el que los recursos y los servicios se entregan a través de Internet. Esto permite a los desarrolladores acceder a recursos de hardware y software potentes sin tener que preocuparse por la infraestructura subyacente. La computación en la nube está transformando la forma en que se desarrolla y se entrega el software, permitiendo una mayor escalabilidad y flexibilidad."
       },
       {
         position: [8, -8, 0],
@@ -243,12 +249,10 @@ const TechnologiesCanvas = () => {
         }),
         y: 10,
         x: -10,
-        title: "Formularios dinámicos",
-        text: "Obtén data de una manera sencilla y divertida.",
+        title: "Inmersión \n 3D",
+        text: "",
         text2:
-          "Con nuestros formularios dinámicos puede obtener la retroalimentación\
-          que esperas, mientras tus usuarios exploran de una manera creativa e \
-          ingeniosa cómo depositar su información.",
+          "Los sitios web en 3D ofrecen una experiencia más inmersiva y realista para los usuarios. Estos sitios utilizan tecnologías como WebGL, Three.js y A-Frame para crear entornos en 3D interactivos y animaciones en tiempo real en el navegador. Esto permite a los desarrolladores crear experiencias más emocionantes y atractivas para los usuarios, como juegos en línea, modelos en 3D, presentaciones virtuales, etc. Los sitios web en 3D están transformando la forma en que los usuarios interactúan con la web y tienen el potencial de revolucionar la forma en que se entregan productos y servicios en línea.",
       },
       {
         position: [-12.8, 2.8, 0],
@@ -257,13 +261,10 @@ const TechnologiesCanvas = () => {
           color: new THREE.Color(0xc4ff00),
         }),
         y: 2.5,
-        title: "API’s & Webhooks",
-        text: "Las bases de datos requieren un distribuidor de datos que lo haga\
-          de forma ordenada y que eviten errores de almacenamiento.",
+        title: "Orquestación de \n contenedores",
+        text: "",
         text2:
-          "Un API se encarga de ordenar y entregar la información necesaria\
-          a quien la pida. Por otro lado, los webhooks son los encargados de notificar\
-          una acción en una aplicación o sitio web.",
+          "Los contenedores son una forma de empaquetar aplicaciones y sus dependencias en unidades aisladas que pueden ser ejecutadas en cualquier entorno. La orquestación de contenedores es una forma de gestionar y automatizar la ejecución de contenedores en un sistema distribuido. Estas tecnologías están transformando la forma en que se despliega y se administra el software, permitiendo una mayor portabilidad y escalabilidad.",
       },
       {
         position: [-2.5, 9, 0],
@@ -272,16 +273,10 @@ const TechnologiesCanvas = () => {
           color: new THREE.Color(0xc4ff00),
         }),
         y: 2.5,
-        title: "Integración y soporte de aplicaciones de terceros",
-        text: "Existe un universo de aplicaciones con las cuáles es posible conectar \
-          un servicio ya existente. ",
+        title: "BlockChain",
+        text: "",
         text2:
-          "Por ejemplo, una tienda en línea puede conectarse con Hubspot\
-          para guardar datos de sus leads; después se conecta con Gmail \
-          o MailChimp para generar campañas publicitarias; al final se obtendría \
-          una hoja de cálculo con esa lista de contactados y usuarios que \
-          interactuaron con la campaña. En Alnitak generamos tanto la integración \
-          como el soporte con estas herramientas.",
+          "BlockChain es una tecnología distribuida que permite a los usuarios realizar transacciones seguras y transparentes sin la necesidad de intermediarios. La seguridad en la nube es una forma de proteger los datos y los recursos en la nube. Estas tecnologías están transformando la forma en que se realizan transacciones y se protegen los datos en línea, y se espera que tengan un impacto significativo en el futuro del desarrollo de software",
       },
       {
         position: [11.5, 4, 0],
@@ -290,15 +285,10 @@ const TechnologiesCanvas = () => {
           color: new THREE.Color(0xc4ff00),
         }),
         y: 2.5,
-        title: "Arquitectura en la nube",
-        text: "Con nosotros todo está a salvo.",
+        title: "Microservicios",
+        text: "",
         text2:
-          "Todas nuestras tecnologías requieren que sean desplegadas en sintonía y que sean\
-          accesibles para cualquier usuario en el mundo. Para esto existen distintas \
-          empresas que brindan servicios de alojamiento en la nube en las cuales puedas \
-          interactuar entre aplicaciones, sitios web, APIs, bases de datos, etc. En \
-          Alnitak usamos AWS, Azure, Google Cloud, entre otras empresas, para alojar \
-          contenido e interactuar con él.",
+          "Los microservicios son una forma de desarrollar aplicaciones como una colección de servicios pequeños y autónomos que interactúan entre sí. Esto permite a los equipos de desarrollo trabajar de manera más eficiente y flexible, y permite una mayor escalabilidad y flexibilidad. Con los microservicios, los errores en un servicio pueden ser detectados y solucionados sin afectar a los demás servicios, lo que aumenta la resiliencia y la disponibilidad de la aplicación.",
       },
       {
         position: [11.5, -24, 0],
@@ -307,6 +297,9 @@ const TechnologiesCanvas = () => {
           color: new THREE.Color(0xc4ff00),
         }),
         y: 2.5,
+        title: "DevOps y \n automatización",
+        text: "",
+        text2: "DevOps es una práctica que combina desarrollo de software y operaciones para mejorar la velocidad y eficiencia de la entrega de software. La automatización de la entrega de software es una parte importante de DevOps, y permite a los equipos automatizar tareas repetitivas y liberar recursos para enfocarse en tareas más importantes. Estas tecnologías están transformando la forma en que los equipos de desarrollo trabajan juntos, lo que aumenta la velocidad y la eficiencia en la entrega de software."
       },
       {
         position: [-12.5, -27, 0],
@@ -315,6 +308,9 @@ const TechnologiesCanvas = () => {
           color: new THREE.Color(0xc4ff00),
         }),
         y: 2.5,
+        title: "Progressive Web \n Applications (PWAs)",
+        text: "",
+        text2:"Las PWAs son aplicaciones web que funcionan como una aplicación nativa y proporcionan una experiencia de usuario similar a una aplicación móvil. PWAs son compatibles con múltiples plataformas, incluidas desktop, móvil y tablet, y se pueden usar sin conexión. Esto las hace ideales para aplicaciones que requieren una experiencia de usuario rápida y sin interrupciones, y también permite a los desarrolladores llegar a una audiencia más amplia. PWAs también son más fáciles de implementar y mantener que las aplicaciones nativas, lo que aumenta la eficiencia y reduce los costos de desarrollo. Con la adopción cada vez mayor de las PWAs, estas aplicaciones están transformando la forma en que los usuarios interactúan con las aplicaciones en línea."
       },
     ];
   
@@ -333,46 +329,45 @@ const TechnologiesCanvas = () => {
             color={"white"}
             fontSize={.8}
             font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-            position={[-5, -7, 0]}
-            textAlign="center"
+            position={[-6, -6, 0]}
           >
-            {`Sitios inmersivos\n en 3D`}
+            {momentsArray[0].title}
           </Text>
           <Text
             color={"white"}
             fontSize={.8}
             font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-            position={[3, -7, 0]}
+            position={[3, -6, 0]}
             textAlign="center"
           >
-            {`Visualización\n de datos`}
+            {momentsArray[1].title}
           </Text>
           <Text
             color={"white"}
             fontSize={.8}
             font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-            position={[11.5, -6, 0]}
+            position={[10.5, -5.5, 0]}
             textAlign="center"
           >
-            {`Formularios\ndinámicos`}
+            {momentsArray[2].title}
           </Text>
           <Text
             color={"white"}
             fontSize={.8}
             font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-            position={[-10, 4.6, 0]}
+            position={[-10, 5, 0]}
             textAlign="center"
           >
-            {`API’s & \nWebhooks`}
+            {momentsArray[3].title}
           </Text>
           <Text
             color={"white"}
             fontSize={.8}
             font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
-            position={[2.5, 11, 0]}
+            position={[1, 10, 0]}
             textAlign="center"
           >
-            {`Integración y soporte \nde aplicaciones de terceros`}
+            {momentsArray[4].title}
           </Text>
           <Text
             color={"white"}
@@ -381,8 +376,27 @@ const TechnologiesCanvas = () => {
             position={[11, 6, 0]}
             textAlign="center"
           >
-            {`Arquitectura \nen la nube`}
+            {momentsArray[5].title}
           </Text>
+          <Text
+            color={"white"}
+            fontSize={.8}
+            font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
+            position={[11, -22, 0]}
+            textAlign="center"
+          >
+            {momentsArray[6].title}
+          </Text>
+          <Text
+            color={"white"}
+            fontSize={.8}
+            font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
+            position={[-12, -24, 0]}
+            textAlign="center"
+          >
+            {momentsArray[7].title}
+          </Text>
+          
           {/* Constelation lines */}
           <group scale={0.4} position={[-.5, -9, 0]}>
             <Line
